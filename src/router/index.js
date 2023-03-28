@@ -1,25 +1,54 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import PaginaInicial from './views/PaginaIncial/PaginaInicial.vue'
+import FavoritosPagina from './views/Favoritos/FavoritosPagina.vue'
+import RepositorioResultado from './views/RepositorioResultado/RepositorioResultado.vue'
+import ResultadoNaoEncontrado from './views/ResultadoNaoEncontrado/ResultadoNaoEncontrado.vue'
+import PaginaNaoEncontrada from './views/PaginaNaoEncontrada/PaginaNaoEncontrada.vue'
+import UsuarioRepositorios from './views/UsuarioRepositorios/UsuarioRepositorios.vue'
+import UsuariosResultado from './views/UsuariosResultado/UsuariosResultado.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    {
+        name: 'PaginaInicial',
+        path: '/',
+        component: PaginaInicial
+    },
+    {
+        name: 'favoritos',
+        path: '/favoritos',
+        component: FavoritosPagina
+    },
+    {
+        name: 'repositorio-resultado',
+        path: '/repositorio-resultado',
+        component: RepositorioResultado
+    },
+    {
+        name: 'usuario-repositorios',
+        path: '/usuario-repositorios',
+        component: UsuarioRepositorios
+    },
+    {
+        name: 'usuarios-resultado',
+        path: '/usuarios-resultado',
+        component: UsuariosResultado,
+        props: true
+    },
+    {
+        name: 'resultado-nao-encontrado',
+        path: '/resultado-nao-encontrado',
+        component: ResultadoNaoEncontrado
+    },
+    {
+        name: 'pagina-nao-encontrada',
+        path: '/:pathMatch(.*)*',
+        component: PaginaNaoEncontrada
+    },
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+    history: createWebHistory(),
+    routes,
 })
 
 export default router
