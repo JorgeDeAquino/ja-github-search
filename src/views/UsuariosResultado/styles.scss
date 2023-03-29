@@ -1,0 +1,31 @@
+@import '../../assets/styles/colors';
+@import '../../assets/styles/variaveis';
+
+.container_usuariosResultado {
+    @include flex;
+    flex-direction: column;
+    padding-top: 71px;
+
+    .usuario_resultado{
+        height: 171px;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        font-weight: 300;
+        font-size: 36px;
+        box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin:20px 60px 20px 60px;
+
+        img{
+            width: 144px;
+            height: 144px;
+            padding: 10px;
+            border-radius: 15px;     
+        }
+        h2{
+            height: 100%;
+            margin-top: 40px;
+        }
+    }
+}

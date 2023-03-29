@@ -1,0 +1,66 @@
+@import '../../assets/styles/colors';
+@import '../../assets/styles/variaveis';
+
+.container_UsuarioDetalhe {
+    display: flex;
+    padding: 36px 42px 24px 17px;
+
+    .usuario_card {
+        width: 339px;
+        max-height: 644px;
+        background-color: $background;
+        border-radius: $radiusSm;
+        padding: 15px 20px 14px 20px;
+
+        img {
+            width: 300px;
+            border-radius: $radiusSm;
+            margin-bottom: 14px;
+        }
+
+        .usuario_infos {
+            h2 {
+                font-weight: 300;
+                font-size: 36px;
+                line-height: 43px;
+            }
+
+            h3 {
+                font-weight: 300;
+                font-size: 24px;
+                line-height: 28px;
+                color: $cinza;
+            }
+            
+            ul {
+                list-style: none;
+                margin-top: 44px;
+                
+                li {
+                    color: $cinza;
+                    @include flex;
+                    gap: 12px;
+
+                    img {
+                        width: 20px;
+                        height: 15px;
+                        color: $btnselecionado;
+                    }
+
+                    span {
+                        font-weight: 300;
+                        font-size: 20px;
+                        line-height: 24px;
+                        margin-bottom: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    .lista_repositorios {
+        margin-left: 70px;
+        display: flex;
+        flex-direction: column;
+    }
+}

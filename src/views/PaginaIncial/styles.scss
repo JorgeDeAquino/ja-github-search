@@ -1,0 +1,45 @@
+@import '@/assets/styles/_colors.scss';
+@import '@/assets/styles/_variaveis.scss';
+
+.container_PaginaInicial {
+    @include flex;
+    flex-direction: column;
+    padding-top: 54px;
+
+    img {
+        width: 169px;
+        height: 169px;
+        margin-bottom: 72px
+    }
+
+    .btns {
+        @include flex;
+        gap: 41px;
+        margin-bottom: 46px;
+        .btn_escolha {
+            height: 51px;
+            width: 186px;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: $radiusSm;
+            border: $border;
+        }
+
+        .btnSelecionado1, .btnSelecionado2 {
+            background-color: $btnselecionado;
+            color: $padrao;
+        }
+    }
+
+    .input_search {
+        input {
+            width: 780px;
+            height: 71px;
+            border: $border;
+            border-radius: $radiusBg;
+            box-shadow: $shadowHome;
+            padding-left: 41px;
+            font-size: 24px;
+        }
+    }
+}

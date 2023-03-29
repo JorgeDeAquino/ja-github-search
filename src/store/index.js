@@ -7,6 +7,7 @@ export const store = createStore({
       users: [],
       user: [],
       repos: [],
+      favoritosRepos: [],
       text: '',
     }
   },
@@ -25,6 +26,15 @@ export const store = createStore({
     },
     SET_TEXT(state, params) {
       state.text = params
+    },
+    ADD_REPO_FAVORITOS(state, repo) {
+      state.favoritosRepos.push(repo)
+    },
+    REMOVER_REPO_FAVORITOS(state, repoId) {
+      const index = state.favoritosRepos.findIndex(repo => repo.id === repoId)
+      if (index !== -1) {
+        state.favoritosRepos.splice(index, 1)
+      }
     }
   },
   actions: {
@@ -32,7 +42,7 @@ export const store = createStore({
       try {
         const response = await axios.get(
           `https://api.github.com/search/users?q=${state.text}&page=1`
-          );
+        );
         commit('BUSCANDO_USERS', response.data.items);
         return response.data;
       } catch (error) {
@@ -43,7 +53,7 @@ export const store = createStore({
       try {
         const response = await axios.get(
           `https://api.github.com/users/${state.text}`
-          );
+        );
         commit('USER_SELECIONADO', response.data);
         console.log(response.data)
         console.log(this.user)
@@ -56,7 +66,7 @@ export const store = createStore({
       try {
         const response = await axios.get(
           `https://api.github.com/search/repositories?q=${state.text}&page=1`
-          );
+        );
         commit('BUSCANDO_REPOS', response.data.items);
         return response.data;
       } catch (error) {
@@ -67,7 +77,7 @@ export const store = createStore({
       try {
         const response = await axios.get(
           `https://api.github.com/users/${state.text}/repos?direction=desc`
-          );
+        );
         commit('BUSCANDO_REPOS_DECRESCENTE', response.data);
         return response.data;
       } catch (error) {
@@ -75,6 +85,8 @@ export const store = createStore({
       }
     },
   },
-  modules: {
+  getters: {
+    favoritosRepos: state => state.favoritosRepos
   }
+
 })

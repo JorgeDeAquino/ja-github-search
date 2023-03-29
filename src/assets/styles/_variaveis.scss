@@ -1,0 +1,21 @@
+@import './colors';
+
+
+//Border-radius
+$radiusBg: 10px;
+$radiusSm: 5px;
+
+//Box-Shadow
+$shadowHome: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$shadowCards:  0px 0px 10px 10px rgba(0, 0, 0, 0.1);
+$shadowUsuario:  (0px 0px 4px #000000);
+
+$border: 2px solid $btnselecionado;
+
+
+//mixins
+
+@mixin flex {
+    display: flex;
+    align-items: center;
+}

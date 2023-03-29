@@ -1,0 +1,37 @@
+@import '@/assets/styles/_variaveis.scss';
+@import '@/assets/styles/_colors.scss';
+
+header{
+    @include flex;
+    justify-content: space-between;
+    height: 84px;
+    padding: 0 1rem;
+    background-color: $background;
+    box-shadow: $shadowHome;
+
+    p {
+        font-size: 32px;
+    }
+
+    ul {
+        list-style: none;
+        @include flex;
+        justify-content: center;
+        gap: 2rem;
+
+        li .router-link-active {
+            color: $destaque;
+        }
+
+        li a{
+            text-decoration: none;
+            color: $btnselecionado;
+            font-size: 20px;
+            font-weight: 700;
+
+            &:last-child {
+                margin-right: .5rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+@import '../../assets/styles/colors';
+@import '../../assets/styles/variaveis';
+
+.btn_ver-mais {
+    width: 168px;
+    margin-top: 75.98px;
+    margin-bottom: 25px;
+    align-self: center;
+    height: 46px;
+    border: $border;
+    font-size: 24px;
+    font-weight: 400;
+    border-radius: $radiusBg;
+    background-color: $padrao;
+}

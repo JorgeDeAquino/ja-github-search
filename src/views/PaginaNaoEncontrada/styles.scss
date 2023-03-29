@@ -1,0 +1,23 @@
+@import '../../assets/styles/colors';
+@import '../../assets/styles/variaveis';
+
+.container_PaginaNaoEncontrada {
+    @include flex;
+    flex-direction: column;
+    justify-content: center;
+
+    img {
+        width: 169px;
+        margin-top: 54px;
+    }
+
+    .text_404 {
+        width: 681px;
+        
+        h2 {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 700;
+        }
+    }
+}
