@@ -41,8 +41,7 @@ export default {
     },
     methods: {
         ...mapMutations([
-            'ADD_REPO_FAVORITOS',
-            'REMOVER_REPO_FAVORITOS'
+            'TOGGLE_REPO_FAVORITOS'
         ]),
         favorite() {
             let repo = {
@@ -51,11 +50,8 @@ export default {
                 descricao: this.descricao,
                 stars: this.stars,
             }
-            if (this.isFavorite) {
-                this.REMOVER_REPO_FAVORITOS(repo.id)
-            } else {
-                this.ADD_REPO_FAVORITOS(repo)
-            }
+            this.TOGGLE_REPO_FAVORITOS(repo)
+
         }
     },
 }

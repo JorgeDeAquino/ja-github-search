@@ -27,13 +27,12 @@ export const store = createStore({
     SET_TEXT(state, params) {
       state.text = params
     },
-    ADD_REPO_FAVORITOS(state, repo) {
-      state.favoritosRepos.push(repo)
-    },
-    REMOVER_REPO_FAVORITOS(state, repoId) {
-      const index = state.favoritosRepos.findIndex(repo => repo.id === repoId)
+    TOGGLE_REPO_FAVORITOS(state, repo) {
+      const index = state.favoritosRepos.findIndex(favorite => favorite.id === repo.id)
       if (index !== -1) {
         state.favoritosRepos.splice(index, 1)
+      } else {
+        state.favoritosRepos.push(repo)
       }
     }
   },
