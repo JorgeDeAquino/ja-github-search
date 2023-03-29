@@ -16,7 +16,7 @@
             margin: 0;
         }
 
-        .btn_estrela {
+        button {
             width: 43px;
             height: 43px;
             background-color: transparent;
@@ -25,6 +25,7 @@
             img {
                 width: 100%;
                 cursor: pointer;
+                color: yellow;
             }
         }
     }

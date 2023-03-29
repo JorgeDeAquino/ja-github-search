@@ -2,7 +2,7 @@
     <div class="card">
         <div class="lista_title">
             <h2 class="titulo">{{ nome }}</h2>
-            <button class="btn_estrela" :class="{ 'favorite': isFavorite }" @click="favorite"><img
+            <button :class="{ 'favorite': isFavorite }" @click="favorite"><img
                     src="@/assets/images/star.svg" alt="star"></button>
         </div>
         <p>{{ descricao }}</p>

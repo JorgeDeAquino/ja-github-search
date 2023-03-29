@@ -9,6 +9,7 @@ export const store = createStore({
       repos: [],
       favoritosRepos: [],
       text: '',
+      page: 1
     }
   },
   mutations: {
@@ -19,7 +20,7 @@ export const store = createStore({
       state.user = params
     },
     BUSCANDO_REPOS(state, params) {
-      state.repos = params
+      state.repos.push(...params)
     },
     BUSCANDO_REPOS_DECRESCENTE(state, params) {
       state.repos = params
@@ -34,6 +35,9 @@ export const store = createStore({
       } else {
         state.favoritosRepos.push(repo)
       }
+    },
+    SET_PAGE(state, page) {
+      state.page = page
     }
   },
   actions: {
@@ -64,7 +68,7 @@ export const store = createStore({
     async GET_REPOS({ commit, state }) {
       try {
         const response = await axios.get(
-          `https://api.github.com/search/repositories?q=${state.text}&page=1`
+          `https://api.github.com/search/repositories?q=${state.text}&page=${state.page}&per_page=3`
         );
         commit('BUSCANDO_REPOS', response.data.items);
         return response.data;
@@ -83,9 +87,12 @@ export const store = createStore({
         console.log(error);
       }
     },
+    PAGE_SET({ commit }, page) {
+      commit('SET_PAGE', page)
+    }
   },
   getters: {
-    favoritosRepos: state => state.favoritosRepos
+    favoritosRepos: state => state.favoritosRepos,
+    repos: state => state.repos
   }
-
 })
