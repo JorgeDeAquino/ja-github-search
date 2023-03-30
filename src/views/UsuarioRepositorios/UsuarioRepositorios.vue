@@ -34,10 +34,11 @@
             </div>
         </div>
         <div class="lista_repositorios">
-            <div v-for="repo in repos" :key="repo.id" >
-                <CardResultado :nome="repo.name" :descricao="repo.description" :stars="repo.stargazers_count" :id="repo.id" />
+            <div v-for="repo in repos" :key="repo.id">
+                <CardResultado :nome="repo.name" :descricao="repo.description" :stars="repo.stargazers_count"
+                    :id="repo.id" />
             </div>
-            <ButtonVerMais />
+            <ButtonVerMais v-if="showMoreButton" @click="showMore" />
         </div>
     </section>
 </template>
@@ -45,7 +46,7 @@
 <script>
 import ButtonVerMais from '../../components/ButtonVerMais/ButtonVerMais.vue'
 import CardResultado from '../../components/CardResultado/CardResultado.vue'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: 'UsuarioRepositorios',
@@ -57,13 +58,21 @@ export default {
         ...mapState([
             'user',
             'repos',
-        ])
-    },
-    methods:{
-        joaquim(){
-            console.log(this.repos)
+            'page'
+        ]),
+        showMoreButton() {
+            return !this.repos.length == 0 && this.repos.length >= 3
         }
-        
+    },
+    methods: {
+        ...mapActions([
+            'GET_REPOS_DESCENDING',
+            'PAGE_SET',
+        ]),
+        showMore() {
+            this.PAGE_SET(this.page + 1)
+            this.GET_REPOS_DESCENDING()
+        }
     },
 
 }

@@ -23,7 +23,7 @@ export const store = createStore({
       state.repos.push(...params)
     },
     BUSCANDO_REPOS_DECRESCENTE(state, params) {
-      state.repos = params
+      state.repos.push(...params)
     },
     SET_TEXT(state, params) {
       state.text = params
@@ -79,7 +79,7 @@ export const store = createStore({
     async GET_REPOS_DESCENDING({ commit, state }) {
       try {
         const response = await axios.get(
-          `https://api.github.com/users/${state.text}/repos?direction=desc`
+          `https://api.github.com/users/${state.text}/repos?direction=desc&page=${state.page}&per_page=5`
         );
         commit('BUSCANDO_REPOS_DECRESCENTE', response.data);
         return response.data;
