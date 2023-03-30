@@ -8,7 +8,7 @@
                 <img :src="user.avatar_url" :alt="user.name">
                 <h2>{{ user.login }}</h2>
             </div>
-        <ButtonVerMais />
+        <ButtonVerMais v-if="showMoreButton" @click="showMore" />
     </section>
 </template>
 
@@ -24,7 +24,11 @@ export default {
     computed: {
         ...mapState([
             'users',
-        ])
+            'page'
+        ]),
+        showMoreButton() {
+        return !this.users.length == 0 && this.users.length >= 3
+      }
     },
     methods:{
         detailsUser(params){
@@ -37,7 +41,13 @@ export default {
         ...mapActions([
             'GET_USER',
             'GET_REPOS_DESCENDING',
+            'GET_USERS',
+            'PAGE_SET',
         ]),
+        showMore() {
+        this.PAGE_SET(this.page + 1)
+        this.GET_USERS()
+      }
     }
 }
 </script>

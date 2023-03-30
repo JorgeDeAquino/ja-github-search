@@ -14,7 +14,7 @@ export const store = createStore({
   },
   mutations: {
     BUSCANDO_USERS(state, params) {
-      state.users = params
+      state.users.push(...params)
     },
     USER_SELECIONADO(state, params) {
       state.user = params
@@ -44,7 +44,7 @@ export const store = createStore({
     async GET_USERS({ commit, state }) {
       try {
         const response = await axios.get(
-          `https://api.github.com/search/users?q=${state.text}&page=1`
+          `https://api.github.com/search/users?q=${state.text}&page=${state.page}&per_page=3`
         );
         commit('BUSCANDO_USERS', response.data.items);
         return response.data;

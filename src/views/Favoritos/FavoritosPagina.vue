@@ -11,7 +11,7 @@
             <div v-for="repo in favoritosRepos" :key="repo.id">
                 <CardResultado :nome="repo.nome" :descricao="repo.descricao" :stars="repo.stars" :id="repo.id" />
             </div>
-            <ButtonVerMais />
+            <ButtonVerMais v-if="showMoreButton" @click="showMore"/>
         </div>
     </section>
 </template>
@@ -32,8 +32,16 @@ export default {
     computed: {
         ...mapGetters([
             'favoritosRepos'
-        ])
-    }
+        ]),
+        showMoreButton() {
+        return !this.favoritosRepos.length == 0 && this.favoritosRepos.length >= 3
+      }
+    },
+    methods: {
+      showMore() {
+        this.PAGE_SET(this.page + 1)
+      }
+    },
 }
 </script>
 
