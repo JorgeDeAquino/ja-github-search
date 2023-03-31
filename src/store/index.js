@@ -9,7 +9,8 @@ export const store = createStore({
       repos: [],
       favoritosRepos: [],
       text: '',
-      page: 1
+      page: 1,
+      colorStar: false
     }
   },
   mutations: {
@@ -38,7 +39,10 @@ export const store = createStore({
     },
     SET_PAGE(state, page) {
       state.page = page
-    }
+    },
+    TOGGLE_COLOR_STAR(state, value) {
+      state.colorStar = value
+    },
   },
   actions: {
     async GET_USERS({ commit, state }) {
