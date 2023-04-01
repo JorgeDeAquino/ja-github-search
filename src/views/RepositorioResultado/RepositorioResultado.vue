@@ -1,7 +1,7 @@
 <template>
     <section class="container_RepositorioResultado">
       <div v-for="repo in repos" :key="repo.id">
-        <CardResultado :nome="repo.name" :descricao="repo.description" :stars="repo.stargazers_count" :id="repo.id" />
+        <CardResultado :nome="repo.name" :descricao="repo.description" :stars="repo.stargazers_count" :id="repo.id" :star-color="false" />
       </div>
       <ButtonVerMais v-if="showMoreButton" @click="showMore" />
     </section>

@@ -9,7 +9,7 @@
         </div>
         <div v-else class="container_cards">
             <div v-for="repo in favoritosRepos" :key="repo.id">
-                <CardResultado :nome="repo.nome" :descricao="repo.descricao" :stars="repo.stars" :id="repo.id" />
+                <CardResultado :nome="repo.nome" :descricao="repo.descricao" :stars="repo.stars" :id="repo.id" :starColor="repo.starColor"/>
             </div>
             <ButtonVerMais v-if="showMoreButton" @click="showMore"/>
         </div>
