@@ -36,7 +36,7 @@
         <div class="lista_repositorios">
             <div v-for="repo in repos" :key="repo.id">
                 <CardResultado :nome="repo.name" :descricao="repo.description" :stars="repo.stargazers_count"
-                    :id="repo.id" />
+                    :id="repo.id" :starColor="false" />
             </div>
             <ButtonVerMais v-if="showMoreButton" @click="showMore" />
         </div>
